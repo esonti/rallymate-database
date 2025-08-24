@@ -1,0 +1,21 @@
+# Environment files
+.env
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# PostgreSQL
+*.sql~
