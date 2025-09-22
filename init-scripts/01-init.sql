@@ -1,9 +1,22 @@
 -- Initial database setup for Rallymate
 -- This script runs automatically when the container starts for the first time
 
--- Create extensions that might be useful for the application
+-- Create the main rallymate database (already created by POSTGRES_DB)
+-- Create the separate certificates database (using underscore instead of hyphen)
+CREATE DATABASE rallymate_certificates;
+
+-- Switch to main database and create extensions
+\c rallymate;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- Switch to certificates database and create extensions
+\c rallymate_certificates;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- Switch back to main database for remaining setup
+\c rallymate;
 
 -- Set timezone to UTC for consistency
 SET timezone = 'UTC';
